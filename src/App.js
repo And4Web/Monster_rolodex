@@ -20,6 +20,7 @@ class App extends Component{
   render(){
     return (
       <div className="App">
+        <input/>
         <header className="App-header">
         <CardList monsters = { this.state.monsters }/>
          

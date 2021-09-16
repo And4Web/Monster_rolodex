@@ -11,12 +11,20 @@ class App extends Component{
       monsters: [],
       searchField: '',
     }
+
+    //this.handleChange = this.handleChange.bind(this)
+
   }
 
   componentDidMount(){
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => this.setState({monsters: users}))
+  }
+
+  //using arrow function: no need to bind our methods anymore.
+  handleChange = (e) => {
+    this.setState({searchField: e.target.value});
   }
 
   render(){
@@ -29,11 +37,11 @@ class App extends Component{
 
         <SearchBox
           placeholder = 'Search Monster here...'
-          handleChange = {e=> this.setState({searchField: e.target.value})
-          }
+          handleChange = { this.handleChange }
         />
 
         <header className="App-header">
+
         <CardList monsters = { filteredMonsters }/>   
         </header>
         
